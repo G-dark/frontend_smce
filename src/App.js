@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import { Navbar } from "./Navbar";
+import { CreatePanel } from "./CreatePanel";
+import { Sidebar } from "./Sidebar";
+import { useState } from "react";
+import { SearchPanel } from "./SearchPanel";
+import { SellingPanel } from "./SellingPanel";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App() {
+  const [option, setOption] = useState("");
+  switch (option) {
+    case "":
+      return (
+        <div>
+          <Sidebar />
+          <div className="first-container">
+            <Navbar option={option} setOption={setOption} />
+            {option}
+          </div>
+          <div className="second-container">
+            <div className="main-Container"></div>
+          </div>
+        </div>
+      );
+
+    case "1":
+      return (
+        <div>
+          <Sidebar />
+          <div className="first-container">
+              <Navbar option={option} setOption={setOption} />
+          </div>
+
+          <div className="second-container">
+            <div className="main-container">
+              <CreatePanel />
+            </div>
+          </div>
+        </div>
+      );
+
+      case "2":
+      return (
+        <div>
+          <Sidebar />
+          <div className="first-container">
+              <Navbar option={option} setOption={setOption} />
+          </div>
+
+          <div className="second-container">
+            <div className="main-container">
+              <SearchPanel />
+            </div>
+          </div>
+        </div>
+      );
+
+      case "3":
+        return (
+          <div>
+            <Sidebar />
+            <div className="first-container">
+                <Navbar option={option} setOption={setOption} />
+            </div>
+  
+            <div className="second-container">
+              <div className="main-container">
+               <SellingPanel/>
+              </div>
+            </div>
+          </div>
+        );
+
+        default:
+          <h1>No hay información</h1>
+  }
 }
-
-export default App;
