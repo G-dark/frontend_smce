@@ -1,7 +1,7 @@
 import { useState } from "react";
 import lines from "./assets/lines.png"
 
-export function Sidebar() {
+export function Sidebar({option,setOption}) {
   const [on, setOn] = useState(false);
 
   const changeState = () => {
@@ -14,6 +14,7 @@ export function Sidebar() {
   };
 
 
+
   const styles = {
     wrapper: {
       display: "flex",
@@ -22,7 +23,7 @@ export function Sidebar() {
       position: "absolute",
     },
     div: {
-      height: "100vh",
+      height: "120vh",
       width: "4vw",
       padding: "20px",
       backgroundColor: "orange",
@@ -50,8 +51,8 @@ export function Sidebar() {
           ></img>
 
           <ul style={{ display: "flex", flexDirection: "column", position:"absolute", marginLeft:"-5vh"}}>
-            <li className="listI">Inventario</li> 
-            <li className="listI">Reportes</li>
+            <li onClick ={()=>{setOption("4")}} className="listI">Inventario</li> 
+            <li onClick ={()=>{setOption("5")}} className="listI">Reportes</li>
           </ul>
         </div>
       </div>

@@ -11,7 +11,7 @@ export function App() {
     case "":
       return (
         <div>
-          <Sidebar />
+          <Sidebar option={option} setOption={setOption}/>
           <div className="first-container">
             <Navbar option={option} setOption={setOption} />
             {option}
@@ -25,7 +25,7 @@ export function App() {
     case "1":
       return (
         <div>
-          <Sidebar />
+          <Sidebar option={option} setOption={setOption}/>
           <div className="first-container">
               <Navbar option={option} setOption={setOption} />
           </div>
@@ -41,7 +41,7 @@ export function App() {
       case "2":
       return (
         <div>
-          <Sidebar />
+          <Sidebar option={option} setOption={setOption}/>
           <div className="first-container">
               <Navbar option={option} setOption={setOption} />
           </div>
@@ -57,7 +57,7 @@ export function App() {
       case "3":
         return (
           <div>
-            <Sidebar />
+            <Sidebar option={option} setOption={setOption}/>
             <div className="first-container">
                 <Navbar option={option} setOption={setOption} />
             </div>
@@ -69,7 +69,37 @@ export function App() {
             </div>
           </div>
         );
+        case "4":
+        return (
+          <div>
+            <Sidebar option={option} setOption={setOption}/>
+            <div className="first-container">
+                <Navbar option={option} setOption={setOption} />
+            </div>
+  
+            <div className="second-container">
+              <div className="main-container">
+               
+              </div>
+            </div>
+          </div>
+        );
 
+        case "5":
+        return (
+          <div>
+            <Sidebar option={option} setOption={setOption}/>
+            <div className="first-container">
+                <Navbar option={option} setOption={setOption} />
+            </div>
+  
+            <div className="second-container">
+              <div className="main-container">
+               
+              </div>
+            </div>
+          </div>
+        );
         default:
           <h1>No hay información</h1>
   }

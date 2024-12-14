@@ -117,7 +117,7 @@ export function Card({
         style={{
           background: "orange",
           textAlign: "center",
-          width: "10vw",
+          width: "fit-content",
           marginRight: "4vw",
           marginTop: "5vh",
           height: "fit-content",

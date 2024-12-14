@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Modal } from "./Modal";
+import { PopupPanel } from "./PopupPanel";
 
 export const CreatePanel = () => {
   const [qname, setName] = useState("");
@@ -9,6 +11,13 @@ export const CreatePanel = () => {
   const [cost, setCost] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [message, setMessage] = useState("");
+  const [isModalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const openPopupPanel = () => setPopupOpen(true);
+  const closePopupPanel = () => setPopupOpen(false);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -53,20 +62,23 @@ export const CreatePanel = () => {
     formData.append("arriveDate", adate);
     formData.append("cost", cost);
 
-    console.log(formData);
-
     fetch("http://localhost:3010/API/producto", {
       method: "POST",
       body: formData,
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Error en la solicitud");
+          throw new Error("Datos invalidos");
         }
         return response.json();
       })
-      .then((data) => console.log("Éxito:", data))
-      .catch((error) => console.error("Error:", error));
+      .then((data) => {console.log("Éxito:", data)
+        openPopupPanel();
+      })
+      .catch((error) => {console.error("Error:", error)
+        setMessage(error.toString());
+        openModal()
+      });
   };
 
   return (
@@ -164,6 +176,19 @@ export const CreatePanel = () => {
       >
         Crear
       </button>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <div style={{ textAlign: "center" }}>{message}</div> <br />
+        <input
+          style={{ position: "relative", right: "-15vw", padding: "10px" }}
+          type="button"
+          value="Ok"
+          onClick={closeModal}
+        />
+      </Modal>
+
+        <PopupPanel isOpen={isPopupOpen} onClose={closePopupPanel}>
+          Has creado un producto
+        </PopupPanel>
     </>
   );
 };
