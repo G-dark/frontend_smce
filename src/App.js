@@ -4,46 +4,52 @@ import { Sidebar } from "./Sidebar";
 import { useState } from "react";
 import { SearchPanel } from "./SearchPanel";
 import { SellingPanel } from "./SellingPanel";
+import { StatisticalPanel } from "./StatisticalPanel";
+import Stock from "./Stock";
 
 export function App() {
   const [option, setOption] = useState("");
   switch (option) {
     case "":
       return (
-        <div>
-          <Sidebar option={option} setOption={setOption}/>
-          <div className="first-container">
-            <Navbar option={option} setOption={setOption} />
-            {option}
+        <>
+          <div>
+            <Sidebar option={option} setOption={setOption} />
+            <div className="first-container">
+              <Navbar option={option} setOption={setOption} />
+              {option}
+            </div>
+            <div className="second-container">
+              <div className="main-Container"></div>
+            </div>
           </div>
-          <div className="second-container">
-            <div className="main-Container"></div>
-          </div>
-        </div>
+        </>
       );
 
     case "1":
       return (
-        <div>
-          <Sidebar option={option} setOption={setOption}/>
-          <div className="first-container">
+        <>
+          <div>
+            <Sidebar option={option} setOption={setOption} />
+            <div className="first-container">
               <Navbar option={option} setOption={setOption} />
-          </div>
+            </div>
 
-          <div className="second-container">
-            <div className="main-container">
-              <CreatePanel />
+            <div className="second-container">
+              <div className="main-container">
+                <CreatePanel />
+              </div>
             </div>
           </div>
-        </div>
+        </>
       );
 
-      case "2":
+    case "2":
       return (
         <div>
-          <Sidebar option={option} setOption={setOption}/>
+          <Sidebar option={option} setOption={setOption} />
           <div className="first-container">
-              <Navbar option={option} setOption={setOption} />
+            <Navbar option={option} setOption={setOption} />
           </div>
 
           <div className="second-container">
@@ -54,53 +60,52 @@ export function App() {
         </div>
       );
 
-      case "3":
-        return (
-          <div>
-            <Sidebar option={option} setOption={setOption}/>
-            <div className="first-container">
-                <Navbar option={option} setOption={setOption} />
-            </div>
-  
-            <div className="second-container">
-              <div className="main-container">
-               <SellingPanel/>
-              </div>
-            </div>
+    case "3":
+      return (
+        <div>
+          <Sidebar option={option} setOption={setOption} />
+          <div className="first-container">
+            <Navbar option={option} setOption={setOption} />
           </div>
-        );
-        case "4":
-        return (
-          <div>
-            <Sidebar option={option} setOption={setOption}/>
-            <div className="first-container">
-                <Navbar option={option} setOption={setOption} />
-            </div>
-  
-            <div className="second-container">
-              <div className="main-container">
-               
-              </div>
-            </div>
-          </div>
-        );
 
-        case "5":
-        return (
-          <div>
-            <Sidebar option={option} setOption={setOption}/>
-            <div className="first-container">
-                <Navbar option={option} setOption={setOption} />
-            </div>
-  
-            <div className="second-container">
-              <div className="main-container">
-               
-              </div>
+          <div className="second-container">
+            <div className="main-container">
+              <SellingPanel />
             </div>
           </div>
-        );
-        default:
-          <h1>No hay información</h1>
+        </div>
+      );
+    case "4":
+      return (
+        <div>
+          <Sidebar option={option} setOption={setOption} />
+          <div className="first-container">
+            <Navbar option={option} setOption={setOption} />
+          </div>
+
+          <div className="second-container">
+            <Stock />
+            <div className="main-container"></div>
+          </div>
+        </div>
+      );
+
+    case "5":
+      return (
+        <div>
+          <Sidebar option={option} setOption={setOption} />
+          <div className="first-container">
+            <Navbar option={option} setOption={setOption} />
+          </div>
+
+          <div className="second-container">
+            <div className="main-container">
+              <StatisticalPanel />
+            </div>
+          </div>
+        </div>
+      );
+    default:
+      <h1>No hay información</h1>;
   }
 }

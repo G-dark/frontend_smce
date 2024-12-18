@@ -4,7 +4,7 @@ export const Slider = ({ data }) => {
   const [j, setJ] = useState(0);
 
   const adelantar = () => {
-    if(data.length - i !== 0){
+    if(data.length - i > 0){
         setI((t) => t + 4);
         setJ((t) => t + 4);
     }
@@ -17,8 +17,11 @@ export const Slider = ({ data }) => {
       setJ((t) => t - 4);
     }
   };
+
+  
   return (
     <>
+   
       <div style={{ display: "flex", flexDirection: "row" }}>
         <input
           style={{ backgroundColor:"orange", display: "flex", flexDirection: "column" }}
@@ -33,7 +36,8 @@ export const Slider = ({ data }) => {
               <h2>{sell.code}</h2>
               <h3>{sell.customerID}</h3>
               <h3>{sell.total}</h3>
-              <h3>{sell.orderDate}</h3>
+              <h3>{(new Date(sell.orderDate)).toLocaleString("es-CO")}</h3>
+              <hr/>
             </div>
           );
         })}

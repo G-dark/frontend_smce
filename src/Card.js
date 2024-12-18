@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import deleteimg from "./assets/borrar.png";
 import updateimg from "./assets/actualizar.png";
 import { Modal } from "./Modal";
+import moment from "moment";
 
 export function Card({
   imgsrc,
@@ -26,9 +27,17 @@ export function Card({
   const [edate, setEDate] = useState(caducidad);
   const [adate, setADate] = useState(fechaIngreso);
   const [cost, setCost] = useState(costo);
+  const [duracion, setDuracion] = useState("")
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(imgsrc);
+
+  useEffect(()=>{
+    const date1 = moment(adate);
+    const date2 = moment((new Date(Date.now()).toString()));
+
+    setDuracion(date1.diff(date2, "days") + " dias")
+  },[adate])
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -127,12 +136,13 @@ export function Card({
       >
         <h1>{name}</h1>
         <img style={{ width: "9vh" }} src={imgsrc} alt="Imagen de perfil" />
-        <h3>Precio: {precio}</h3>
+        <h3>Precio:{precio}</h3>
         <h3>Cantidad: {cantidad}</h3>
         <h3>código: {codigo}</h3>
         <h3>Ingreso:{fechaIngreso}</h3>
         <h3>Caducidad:{caducidad}</h3>
         <h3>Costo:{costo}</h3>
+        <h3>Tiempo en stock:{duracion}</h3>
         <div className="frame">
           <div className="head">
             <img

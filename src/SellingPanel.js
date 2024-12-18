@@ -18,7 +18,7 @@ export function SellingPanel() {
   const openPopupPanel = () => setPopupOpen(true);
   const closePopupPanel = () => setPopupOpen(false);
 
-  const [style, setStyle] = useState({ backgroundColor:"orange", width: "8.7vw"})
+  const [style, setStyle] = useState({ backgroundColor:"orange", width: "6.6vw"})
   const [styleB, setStyleB] = useState({
     display: "flex",
     flexDirection: "column",
@@ -28,7 +28,7 @@ export function SellingPanel() {
     maxWidth: "40vw",
     maxHeight: "30vh",
   })
-  const style2 = { backgroundColor:"orange", width: "47.2vw"};
+  const style2 = { backgroundColor:"orange", width: "40vw"};
   const styleB2 = {
     display: "flex",
     flexDirection: "column",
@@ -51,11 +51,24 @@ export function SellingPanel() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let letras = new RegExp(/^[A-Za-z\s]+$/g)
+    let numeros = new RegExp(/^[0-9]+$/g)
+    let numeros2 = new RegExp(/^[0-9]+$/g)
+  
+    let str ="";
+    productsList.map(product=>{return str += product})
+
+    // bug extraño inexplicable
+   
+  
     if (
       name.trim() !== "" &&
-      name !== undefined &&
+      name !== undefined && 
+      numeros.test(str) &&
+      letras.test(name) &&
+      numeros2.test(ced)&&
       ced.trim() !== "" &&
-      ced !== undefined
+      ced !== undefined 
     ) {
       const data = {
         customerName: name,

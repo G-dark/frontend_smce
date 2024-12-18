@@ -23,7 +23,7 @@ export function Sidebar({option,setOption}) {
       position: "absolute",
     },
     div: {
-      height: "120vh",
+      height: "140vh",
       width: "4vw",
       padding: "20px",
       backgroundColor: "orange",
@@ -50,9 +50,9 @@ export function Sidebar({option,setOption}) {
             alt="tres lineas"
           ></img>
 
-          <ul style={{ display: "flex", flexDirection: "column", position:"absolute", marginLeft:"-5vh"}}>
-            <li onClick ={()=>{setOption("4")}} className="listI">Inventario</li> 
-            <li onClick ={()=>{setOption("5")}} className="listI">Reportes</li>
+          <ul style={{ display: "flex", flexDirection: "column", position:"absolute", marginLeft:"-40px"}}>
+            <li style={{cursor:"pointer"}} onClick ={()=>{setOption("4")}} className="listI">Inventario</li> 
+            <li style={{cursor:"pointer"}} onClick ={()=>{setOption("5")}} className="listI">Reportes</li>
           </ul>
         </div>
       </div>
