@@ -222,7 +222,7 @@ export function Card({
         <button
           style={{
             padding: "20px",
-            marginLeft: "13vw",
+            marginLeft: "10vw",
             marginTop: "10px",
             fontSize: "15px",
           }}

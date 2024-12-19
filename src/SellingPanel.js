@@ -8,7 +8,9 @@ export function SellingPanel() {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [ced, setCed] = useState("");
-  const [total, setTotal] = useState("");
+  const [total, setTotal] = useState("$");
+  const [subtotal, setSubtotal] = useState("$");
+  const [iva, setIva] = useState("$");
   const [message, setMessage] = useState("");
   const [data, setData] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -92,7 +94,12 @@ export function SellingPanel() {
         .then((data) => {
           console.log("Éxito:", data);
           openPopupPanel();
-          setTotal(data.total);
+          setTotal("$")
+          setIva("$")
+          setSubtotal("$")
+          setTotal((t)=>t + " " + data.total);
+          setIva((t)=>t + " " + data.iva);
+          setSubtotal((t)=>t + " " + data.subtotal);
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -155,6 +162,23 @@ export function SellingPanel() {
             <span className="lupaicon"></span>
           </button>
         </div>
+        <div style={{display:"flex",flexDirection:"column"}}>
+        Subtotal:
+        <input
+          value={subtotal}
+          className="inData"
+          id="total"
+          type="text"
+          disabled
+        />
+        iva:
+        <input
+          value={iva}
+          className="inData"
+          id="total"
+          type="text"
+          disabled
+        />
         Total:
         <input
           value={total}
@@ -163,13 +187,15 @@ export function SellingPanel() {
           type="text"
           disabled
         />
+        </div>
+       
         <input
           style={{
             padding: "10px 50px",
             marginTop: "25px",
             alignSelf: "center",
             position: "relative",
-            right: "-100px",
+            right: "-190px",
           }}
           type="button"
           value="Vender"

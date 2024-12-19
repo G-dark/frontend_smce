@@ -111,68 +111,81 @@ export function StatisticalPanel() {
       const newDate = new Date(sell.orderDate);
       console.log(newDate.getMonth());
       if (newDate.getFullYear() === years[+optionSelected2]) {
-        dataByMonth[newDate.getMonth()].count += sell.total;
+        dataByMonth[newDate.getMonth()].count += sell.subtotal;
       }
     });
   };
+
+ const stringToDate = (str) =>{
+  const partes= str.split('-');
+
+  const year = parseInt(partes[0]);
+  const month = parseInt(partes[1]);
+  const day = parseInt(partes[2]);
+
+  const date = new Date(year,month,day)
+  return date;
+ }
   const sellsByDay = async () => {
     data.forEach((sell) => {
       const newDate = new Date(sell.orderDate);
 
-      if (newDate >= new Date(from) && newDate <= new Date(to)) {
-        dataByDay[newDate.getDay()].count += sell.total;
+      if (newDate >= stringToDate(from) && newDate <= stringToDate(to)) {
+       
+        dataByDay[newDate.getDay()-1].count += sell.subtotal;
       }
     });
   };
   const sellsByProduct = async () => {
+    console.log(data)
     data.forEach((sell) => {
       // eslint-disable-next-line
       sell.products.map((product) => {
         const newDate = new Date(sell.orderDate);
 
-        if (newDate >= new Date(from) && newDate <= new Date(to)) {
+        if (newDate >= stringToDate(from) && newDate <= stringToDate(to)) {
           if (
             product.name.includes("Cerveza") ||
             product.name.includes("cerveza")
           ) {
-            dataByProduct[0].count += sell.total;
+            dataByProduct[0].count += sell.subtotal;
           } else if (
             product.name.includes("Vodka") ||
             product.name.includes("vodka")
           ) {
-            dataByProduct[1].count += sell.total;
+            dataByProduct[1].count += sell.subtotal;
           } else if (
             product.name.includes("Tequila") ||
             product.name.includes("tequila")
           ) {
-            dataByProduct[2].count += sell.total;
+            dataByProduct[2].count += sell.subtotal;
           } else if (
             product.name.includes("Ron") ||
             product.name.includes("ron")
           ) {
-            dataByProduct[3].count += sell.total;
+            dataByProduct[3].count += sell.subtotal;
           } else if (
             product.name.includes("Aguardiente") ||
             product.name.includes("aguardiente")
           ) {
-            dataByProduct[4].count += sell.total;
+            dataByProduct[4].count += sell.subtotal;
           } else if (
             product.name.includes("Gaseosa") ||
             product.name.includes("gaseosa")
           ) {
-            dataByProduct[5].count += sell.total;
+            dataByProduct[5].count += sell.subtotal;
           } else if (
             product.name.includes("Mekato") ||
             product.name.includes("mekato")
           ) {
-            dataByProduct[6].count += sell.total;
+            dataByProduct[6].count += sell.subtotal;
           } else if (
             product.name.includes("Vino") ||
             product.name.includes("vino")
           ) {
-            dataByProduct[7].count += sell.total;
+            dataByProduct[7].count += sell.subtotal;
           } else {
-            dataByProduct[8].count += sell.total;
+            dataByProduct[8].count += sell.subtotal;
           }
         }
       });

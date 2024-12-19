@@ -137,7 +137,7 @@ export const CreatePanel = () => {
             type="text"
             value={qprice}
             onChange={handlePriceChange}
-            placeholder="Ingresar precio"
+            placeholder="Ingresar precio sin iva"
           />
           Cantidad:
           <input
